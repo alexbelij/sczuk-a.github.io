@@ -1,5 +1,5 @@
 # sczuk-a.github.io
-Incremental game
+Name: Work In Progress
 
 My first Incremental game 
 
