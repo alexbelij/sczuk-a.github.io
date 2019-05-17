@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/styles.css">
-    <title>Alfa 0.0.0.0.1</title>
+    <title>Alfa-0.0.0.0.2</title>
 </head>
 <body>
  <div id="app">
@@ -27,18 +27,21 @@
          <button id="monstersBtn" @click = 'showTab("monstersTb")'> 
             Monsters
          </button >
+         <button id="bossesBtn" @click = 'showTab("bossesTb")'> 
+            Bosses
+         </button >
      </div>
 
      <div id="gearTb" class="tab">
          <div class="gear-container">
-            <button class="gearShop" v-for="(gear,idx) in player.gear" @click=" player.gear[idx].buy();" v-html="player.gear[idx].btnText()">        
+            <button class="gearShop" v-for="(gear,idx) in player.gear" @click=" player.gear[idx].buy();" v-html="player.gear[idx].btnText()" :id="'gear-shop-'+idx">        
             </button>
         </div>
      </div>
 
      <div id="monstersTb" class="tab">
         <div class="monsters-container">
-            <button class="monster" @click = "monster.attack()" v-for="(monster,idx) in player.monsters">
+            <button class="monster" @click = "monster.attack(idx)" v-for="(monster,idx) in player.monsters" :id = "'monster-'+idx" >
                    <strong>
                        {{monster.name}}
                     </strong>
@@ -50,15 +53,29 @@
         </div>
      </div>   
 
+     <div id="bossesTb" class="tab">
+        <div class="boss-container">
+            <h1>WIP</h1>
+            <button class="boss" @click = "boss.attack()" v-for="(boss,idx) in player.bosses">
+                   <strong>
+                       {{boss.name}}
+                    </strong>
+                   <br>
+                   {{format(boss.hp)}} Hp
+            </button>
+        </div>
+     </div>
+
  </div>
 </body>
 <script src="js/vue/vueFinal.js"></script>
 <script src="js/format.js"></script>
 <script src="js/tabs.js"></script>
 <script src="js/lists/monster_list.js"></script>
-<script src="js/lists/gear-list.js"></script>
+<script src="js/lists/gear_list.js"></script>
+<script src="js/lists/boss_list.js"></script>
 <script src="js/gear.js"></script>
-<script src="js/monsters.js"></script>
+<script src="js/enemies.js"></script>
 <script src="js/player.js"></script>
 <script src="js/index.js"></script>
 <script src="js/loop.js"></script>

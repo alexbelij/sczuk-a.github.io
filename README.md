@@ -1,11 +1,10 @@
-# sczuk-a.github.io
-Name: Work In Progress
-
-My first Incremental game 
+# Incremental-Game
 
 
+My first Incremental Game 
 
 
 
-Builds history:
-Alfa 0.0.0.0.1 - 16.5.2019
+Update history:
+Alfa-0.0.0.0.1 - 16.5.2019
+Alfa-0.0.0.0.2 - 17.5.2019 - added Boots, basic animations + some fixes 

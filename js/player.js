@@ -2,11 +2,15 @@
 
 var player = {
     lastTickTime : Date.now(),
+    
     dmg : 0,
     money : 0,
+    teorDps : 0,
     finalDps : 0,
+
     gear : [],
-    monsters: []
+    monsters: [],
+    bosses: []
 }
 
 
@@ -24,7 +28,7 @@ player.gear.push(new Chestplate(chestplate));
 player.gear.push(new Pants(pants));
 player.gear.push(new Boots(boots));
 
-
-
+// import bosses from bosses-list
+player.bosses.push(new Boss(boss1));
 
 

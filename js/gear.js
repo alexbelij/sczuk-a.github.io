@@ -111,7 +111,7 @@ class Pants extends Gear {
     }
 
     btnText(){
-        return this.uniText() + "<br> Lower prises " + format(this.priceCoef) + "x";
+        return this.uniText() + "<br> Lower prices " + format(this.priceCoef) + "x";
     }
 }
 
@@ -120,18 +120,18 @@ class Pants extends Gear {
 class Boots extends Gear {
     constructor(props){
         super(props);
-        this.priceRed = props.priceRed;
-        this.priceRedSc = props.priceRedSc;
+        this.softCapTime = props.softCapTime;
+        this.softCapTimeCs = props.softCapTimeSc;
 
     }
 
     buy(){
         if(super.buy()){
-            this.dps *= this.dpsSc;
+            this.coftCapTime += this.softCapTimeSc;
         }
     }
 
     btnText(){
-        return this.uniText() + "<br> WIP";
+        return this.uniText() + "<br> You will get exhausted when you have " + this.softCapTime + " seconds worth your DPS";
     }
 }
