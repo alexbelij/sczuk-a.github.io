@@ -127,7 +127,7 @@ class Boots extends Gear {
 
     buy(){
         if(super.buy()){
-            this.coftCapTime += this.softCapTimeSc;
+            this.softCapTime += this.softCapTimeSc;
         }
     }
 
