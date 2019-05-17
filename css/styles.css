@@ -13,7 +13,7 @@ body{
 }
 
 button{
-    background-color: blue;
+    background-color: gray;
     border: none;
     outline: none;
 }
@@ -73,7 +73,7 @@ button:active{
     width: 14%;
     border: 1px solid rgb(196, 196, 4);
     background-color: rgb(15, 15, 15);
-    color: red;
+    color: rgb(77, 77, 32);
     font-size: 20px;
 }
 
