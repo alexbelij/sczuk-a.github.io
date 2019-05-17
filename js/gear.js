@@ -121,7 +121,7 @@ class Boots extends Gear {
     constructor(props){
         super(props);
         this.softCapTime = props.softCapTime;
-        this.softCapTimeCs = props.softCapTimeSc;
+        this.softCapTimeSc = props.softCapTimeSc;
 
     }
 
