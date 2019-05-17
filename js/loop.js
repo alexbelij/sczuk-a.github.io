@@ -23,7 +23,7 @@ function dmgSoftCap(that) {
 function uppdateColors(that) {
     for(let i = 0; i < that.player.gear.length ; i++){
         if (that.player.gear[i].canBuy){
-            document.getElementById('gear-shop-' + i).style.color = "rgb(196,196,4)";
+            //document.getElementById('gear-shop-' + i).style.color = "rgb(196,196,4)";
         }
         else {
             document.getElementById('gear-shop-' + i).style.color = "rgb(77,77,32)";
