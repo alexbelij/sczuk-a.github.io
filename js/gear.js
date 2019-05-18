@@ -80,9 +80,11 @@ class Chestplate extends Gear {
 
     buy(){
         if(super.buy()){
-            this.goldMult *= this.goldMultSc;
+            let oldMultiplier = this.goldMult;
+            this.goldMult += this.goldMultSc;
             for(let i = 0 ; i < player.monsters.length ; i++ ){
-                player.monsters[i].goldDrp *= this.goldMultSc;
+                player.monsters[i].goldDrp /= oldMultiplier;
+                player.monsters[i].goldDrp *= this.goldMult;
             }
         }
     }
@@ -111,11 +113,10 @@ class Pants extends Gear {
     }
 
     btnText(){
-        return this.uniText() + "<br> Lower prices " + format(this.priceCoef) + "x";
+        return this.uniText() + "<br> Lower prices " + this.priceCoef + "x";
     }
 }
 
-//WIP
 // increases the soft cap
 class Boots extends Gear {
     constructor(props){
@@ -132,6 +133,6 @@ class Boots extends Gear {
     }
 
     btnText(){
-        return this.uniText() + "<br> You will get exhausted when you have " + this.softCapTime + " seconds worth your DPS";
+        return this.uniText() + "<br> You will get exhausted when you have " + format(this.softCapTime) + " seconds worth your DPS";
     }
 }

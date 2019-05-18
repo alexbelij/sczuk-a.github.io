@@ -19,12 +19,12 @@ var zombie = {
 
 var skeleton = {
     name : "Skeleton",
-    maxHp : 25000,
-    goldDrp : 5000
+    maxHp : 50000,
+    goldDrp : 10000
 }
 
 var mutantSlime = {
     name : "Mutant Slime",
-    maxHp : 100000,
-    goldDrp : 25000
+    maxHp : 1000000,
+    goldDrp : 250000
 }
