@@ -1,7 +1,7 @@
 
 // Gives base DPS
 var weapon = {
-    name: "weapon",
+    name: "Weapon",
     cost: 1,
     costSc: 1.15,
     dps: 1,  // base dps
@@ -10,7 +10,7 @@ var weapon = {
 
 // Gives DPS multiplier
 var helmet = {
-    name: "helmet",
+    name: "Helmet",
     cost: 100,
     costSc: 1.30,
     dpsMult: 1,  // multiplier to dps
@@ -19,7 +19,7 @@ var helmet = {
 
 // Gives multiplier to gold gain from monster kills
 var chestplate = {
-    name: "chestplate",
+    name: "Chestplate",
     cost: 10000,
     costSc: 1.45,
     goldMult: 1,   // multiplier to all gold
@@ -28,7 +28,7 @@ var chestplate = {
 
 // Reduces prices of other gear
 var pants = {
-    name: "pants",
+    name: "Pants",
     cost: 1000000,
     costSc: 1.60,
     priceCoef: 1,   // coeficient of gear upgrade prices
@@ -37,7 +37,7 @@ var pants = {
 
 // Increases the soft cap 
 var boots = {
-    name: "boots",
+    name: "Boots",
     cost: 10,
     costSc: 10,
     softCapTime: 20, // time in seconds after witch the progress starts to go down 

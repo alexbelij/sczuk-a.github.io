@@ -19,7 +19,7 @@ var app = new Vue({
         }
     },
     mounted (){
-        showTab("gearTb")
+        hideAll();
         setInterval(this.gameLoop,30); // starts interval for gameLoop - tick event 
         console.log("start");
     }

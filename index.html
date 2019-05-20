@@ -4,16 +4,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/styles.css">
-    <title>Alfa-0.0.0.0.3</title>
+    <title>Alfa-0.0.0.1.0</title>
 </head>
 <body>
  <div id="app">
 
-     <div class = "fuck">Final DPS: {{format(player.finalDps)}}</div> <!--- needs to be done properly-->
+     
+     <div class="dps-container">
+        <div class = "final-dps">
+            Final DPS: {{format(player.finalDps)}}
+        </div> <!--- needs to be done properly-->
+        <div class="exhaustion" v-if="player.exhaustion == 1">
+            You are running at full speed
+        </div>
+        <div class="exhaustion" v-else>
+                You are exhausted at 1/{{format(player.exhaustion)}} of your dps
+            </div>
+     </div>
 
      <div class = "currency-container">
         <div class = "dmg-currency">
-            You have {{ format(player.dmg) }} accumulated dmg
+            You have {{format(player.dmg)}} accumulated dmg
+        </div>
+        <div class="level-container">
+            <div class="level">
+                Level
+            </div>
+            <div class="level">
+                {{player.level.level}}
+            </div>
+            <div class="xp">
+                {{player.level.xp}}/{{player.level.xpNeeded}} xp
+            </div>
         </div>
         <div class = "money-currency">
             You have {{ format(player.money) }} money
@@ -30,6 +52,9 @@
          <button id="bossesBtn" @click = 'showTab("bossesTb")'> 
             Bosses
          </button >
+         <button id="skillsBtn" @click = 'showTab("skillsTb")'> 
+            Skills
+        </button >
      </div>
 
      <div id="gearTb" class="tab">
@@ -55,28 +80,40 @@
 
      <div id="bossesTb" class="tab">
         <div class="boss-container">
-            <h1>WIP</h1>
             <button class="boss" @click = "boss.attack()" v-for="(boss,idx) in player.bosses">
                    <strong>
                        {{boss.name}}
                     </strong>
                    <br>
                    {{format(boss.hp)}} Hp
+                   <br>
+                   {{format(boss.xpDrop)}} xp per kill
             </button>
         </div>
      </div>
 
+     <div id="skillsTb" class="tab">
+        Skill Tree <br>
+        WIP
+     </div>
+
  </div>
 </body>
-<script src="js/vue/vueFinal.js"></script>
-<script src="js/format.js"></script>
-<script src="js/tabs.js"></script>
+<script src="js/vue/vueDev.js"></script>
+
 <script src="js/lists/monster_list.js"></script>
 <script src="js/lists/gear_list.js"></script>
 <script src="js/lists/boss_list.js"></script>
-<script src="js/gear.js"></script>
-<script src="js/enemies.js"></script>
-<script src="js/player.js"></script>
+
+<script src="js/technical/format.js"></script>
+<script src="js/technical/tabs.js"></script>
+<script src="js/technical/loop.js"></script>
+<script src="js/technical/progress.js"></script>
+
+<script src="js/gameplay/level.js"></script>
+<script src="js/gameplay/gear.js"></script>
+<script src="js/gameplay/enemies.js"></script>
+<script src="js/gameplay/player.js"></script>
+
 <script src="js/index.js"></script>
-<script src="js/loop.js"></script>
 </html>

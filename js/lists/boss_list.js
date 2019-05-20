@@ -1,6 +1,6 @@
 
 var boss1 = {
-    name : "aatrox",
+    name : "BossNumberOne",
     maxHp : 10000000,
-
+    xpDrop : 1
 }
