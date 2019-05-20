@@ -1,8 +1,5 @@
-# Incremental-Game
+# https://sczuk-a.github.io/
 
-https://sczuk-a.github.io/
-https://sczuk-a.github.io/
-https://sczuk-a.github.io/
 
 My first Incremental Game 
 
