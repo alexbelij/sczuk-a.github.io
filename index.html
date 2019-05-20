@@ -4,11 +4,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/styles.css">
-    <title>Alfa-0.0.0.1.0</title>
+    <title>Alfa-0.0.0.2.0</title>
 </head>
 <body>
  <div id="app">
 
+    <button @click = "save()">
+        Save
+    </button>
+    <button @click = "load()">
+        Load
+    </button>
      
      <div class="dps-container">
         <div class = "final-dps">
@@ -34,7 +40,7 @@
                 {{player.level.level}}
             </div>
             <div class="xp">
-                {{player.level.xp}}/{{player.level.xpNeeded}} xp
+                {{player.level.levelXp}}/{{player.level.xpNeeded}} xp
             </div>
         </div>
         <div class = "money-currency">
@@ -109,6 +115,9 @@
 <script src="js/technical/tabs.js"></script>
 <script src="js/technical/loop.js"></script>
 <script src="js/technical/progress.js"></script>
+<script src="js/technical/localStorage/save.js"></script>
+<script src="js/technical/localStorage/load.js"></script>
+
 
 <script src="js/gameplay/level.js"></script>
 <script src="js/gameplay/gear.js"></script>

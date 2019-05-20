@@ -5,6 +5,7 @@ class Level {
     constructor(props){
         this.level = props.level;
         this.xp = props.xp;
+        this.levelXp = props.xp;
         this.xpNeeded = props.xpNeeded;
         this.xpSc = props.xpSc;
         this.skillPoints = props.skillPoints;
@@ -12,14 +13,18 @@ class Level {
 
     addXp(amount){
         this.xp += amount;
-        while(this.xp >= this.xpNeeded){
+        this.levelXp += amount;
+        while(this.levelXp >= this.xpNeeded){
             this.level ++;
             this.skillPoints ++;
-            this.xp -= this.xpNeeded;
+            this.levelXp -= this.xpNeeded;
             this.xpNeeded *= this.xpSc;
         }
-        if(this.level <= 2){
+        if(this.level >= 2){
             show("skillsBtn");
+        }
+        else{
+            hide("skillsBtn");
         }
     }
 }

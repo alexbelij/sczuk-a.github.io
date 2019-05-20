@@ -16,9 +16,16 @@ var app = new Vue({
         },
         showTab(name){
             showTab(name);
-        }
+        },
+        save(){
+            save();
+        },
+        load(){
+            load();
+        },
     },
     mounted (){
+        //load();
         hideAll();
         setInterval(this.gameLoop,30); // starts interval for gameLoop - tick event 
         console.log("start");

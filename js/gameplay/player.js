@@ -30,11 +30,11 @@ player.monsters.push(new Monster(skeleton));
 player.monsters.push(new Monster(mutantSlime));
 
 // import gear from gear-list
-player.gear.push(new Weapon(weapon));
-player.gear.push(new Helmet(helmet));
-player.gear.push(new Chestplate(chestplate));
-player.gear.push(new Pants(pants));
-player.gear.push(new Boots(boots));
+player.gear.push(new Weapon(weapon)); // gear[0]
+player.gear.push(new Helmet(helmet)); // gear[1]
+player.gear.push(new Chestplate(chestplate)); // gear[2]
+player.gear.push(new Pants(pants)); // gear[3]
+player.gear.push(new Boots(boots)); // gear[4]
 
 // import bosses from bosses-list
 player.bosses.push(new Boss(boss1));

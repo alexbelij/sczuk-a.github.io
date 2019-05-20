@@ -6,7 +6,8 @@ class Gear {
     constructor(props){
         this.level = 1;
         this.name = props.name;
-        this.cost = props.cost;
+        this.baseCost = props.baseCost;
+        this.cost = props.baseCost;
         this.costSc = props.costSc;
     }
     
@@ -15,12 +16,25 @@ class Gear {
         return player.money >= this.cost;
     }
 
-    buy(){ // useless without overriding
+    buy(){ // calc needs to be overrided
         if(!this.canBuy) return false; 
         player.money -= this.cost;
-        this.level ++;
-        this.cost *= this.costSc;
+        this.level ++ ;
+        this.calcCost();
+        this.calc();
         return true;
+    }
+
+    calcCost(){
+        this.cost = this.baseCost * Math.pow(this.costSc,this.level - 1) * player.gear[3].costCoef;
+    }
+
+    calc() {};  // needs to be overrided 
+
+    setLvl(lvl){
+        this.level = lvl;
+        this.calcCost();
+        this.calc();
     }
 
     // text with things every gear has
@@ -35,14 +49,13 @@ class Weapon extends Gear {
 
     constructor(props){
         super(props);
-        this.dps = props.dps;
+        this.baseDps = props.baseDps;
+        this.dps = props.baseDps;
         this.dpsSc = props.dpsSc;
     }
 
-    buy(){
-        if(super.buy()){        
-            this.dps += this.dpsSc;    // increases base dps 
-        }
+    calc(){      
+            this.dps = this.baseDps + ( (this.level - 1) * this.dpsSc );    // calculates current dps
     }
 
     btnText(){
@@ -55,14 +68,13 @@ class Weapon extends Gear {
 class Helmet extends Gear {
     constructor(props){
         super(props);
-        this.dpsMult = props.dpsMult;
+        this.baseDpsMult = props.baseDpsMult;
+        this.dpsMult = props.baseDpsMult;
         this.dpsMultSc = props.dpsMultSc;
     }
 
-    buy(){
-        if(super.buy()){
-            this.dpsMult += this.dpsMultSc;
-        }
+    calc(){
+        this.dpsMult = this.baseDpsMult +  (this.level - 1) * this.dpsMultSc;  // calculates current dps multiplier
     }
 
     btnText(){
@@ -74,18 +86,15 @@ class Helmet extends Gear {
 class Chestplate extends Gear {
     constructor(props){
         super(props);
-        this.goldMult = props.goldMult;
+        this.baseGoldMult = props.baseGoldMult;
+        this.goldMult = props.baseGoldMult;
         this.goldMultSc = props.goldMultSc;
     }
 
-    buy(){
-        if(super.buy()){
-            let oldMultiplier = this.goldMult;
-            this.goldMult += this.goldMultSc;
-            for(let i = 0 ; i < player.monsters.length ; i++ ){
-                player.monsters[i].goldDrp /= oldMultiplier;
-                player.monsters[i].goldDrp *= this.goldMult;
-            }
+    calc(){
+        this.goldMult = this.baseGoldMult +  (this.level - 1) * this.goldMultSc ;
+        for(let i = 0 ; i < player.monsters.length ; i++ ){                      // updates gold drops for monsters 
+            player.monsters[i].calcGoldDrp();
         }
     }
 
@@ -94,26 +103,24 @@ class Chestplate extends Gear {
     }
 }
 
-// reduces the prices of gear upgrades 
+// reduces the costs of gear upgrades 
 class Pants extends Gear {
     constructor(props){
         super(props);
-        this.priceCoef = props.priceCoef;     
-        this.priceCoefSc = props.priceCoefSc;
+        this.baseCostCoef = props.baseCostCoef;
+        this.costCoef = props.baseCostCoef;     
+        this.costCoefSc = props.costCoefSc;
     }
 
-    buy(){
-        if(super.buy()){
-            this.priceCoef *= this.priceCoefSc;
-            for(let i = 0 ; i< player.gear.length; i++){
-                player.gear[i].cost *= this.priceCoefSc;
-            }
+    calc(){
+        this.costCoef = this.baseCostCoef * Math.pow(this.costCoefSc,this.level - 1);
+        for(let i = 0 ; i< player.gear.length; i++){
+            player.gear[i].calcCost();
         }
-        
     }
 
     btnText(){
-        return this.uniText() + "<br> Lower prices " + this.priceCoef + "x";
+        return this.uniText() + "<br> Lower costs " + this.costCoef + "x";
     }
 }
 
@@ -121,15 +128,14 @@ class Pants extends Gear {
 class Boots extends Gear {
     constructor(props){
         super(props);
-        this.softCapTime = props.softCapTime;
+        this.baseSoftCapTime = props.baseSoftCapTime;
+        this.softCapTime = props.baseSoftCapTime;
         this.softCapTimeSc = props.softCapTimeSc;
 
     }
 
-    buy(){
-        if(super.buy()){
-            this.softCapTime += this.softCapTimeSc;
-        }
+    calc(){
+        this.softCapTime = this.baseSoftCapTime + (this.level - 1) * this.softCapTimeSc;
     }
 
     btnText(){

@@ -28,7 +28,8 @@ class Enemy {
 class Monster extends Enemy {
     constructor(props){
         super(props);
-        this.goldDrp = props.goldDrp
+        this.baseGoldDrp = props.baseGoldDrp;
+        this.goldDrp = props.baseGoldDrp;
     }
 
     attack(idx) {
@@ -36,6 +37,10 @@ class Monster extends Enemy {
             player.money += this.goldDrp;
             this.respawn(idx)
         }
+    }
+
+    calcGoldDrp(){
+        this.goldDrp = this.baseGoldDrp * player.gear[2].goldMult;
     }
 
     respawn(idx){
